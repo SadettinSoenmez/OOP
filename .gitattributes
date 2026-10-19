@@ -1,0 +1,5 @@
+# Zeilenenden einheitlich: im Repo LF, beim Auschecken passend zum System
+* text=auto
+
+# Bessere Diffs fuer Java (Methodennamen in Hunk-Headern)
+*.java diff=java

@@ -1,0 +1,21 @@
+# Eclipse-Workspace-Daten
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
+
+# Build-Ausgabe
+bin/
+*.class
+
+# Logs und Absturzdateien der JVM
+*.log
+hs_err_pid*
+
+# Betriebssystem / Editoren
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+*.iml
+*~
