@@ -6,6 +6,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import fileCreatorsSoenmez.ConcreteCsvReaderProductSoenmez;
+import fileCreatorsSoenmez.ConcreteReaderCreatorSoenmez;
+import fileCreatorsSoenmez.ReaderProductSoenmez;
+
 public class StadtfuerungModel {
 	private Stadtfuehrung stadtfuehrung;
 
@@ -17,15 +21,17 @@ public class StadtfuerungModel {
 		this.stadtfuehrung = stadtfuehrung;
 	}
 
-	public void leseStadtfuehrungAusCsvDatei() throws IOException {
-		try (BufferedReader ein = new BufferedReader(new FileReader("Stadtfuehrung.csv"))) {
-			String[] zeile = ein.readLine().split(";");
-			this.stadtfuehrung = new Stadtfuehrung(zeile[0],
+	public void leseStadtfuehrungAusDatei(String typ) throws IOException {
+		ConcreteReaderCreatorSoenmez creator = new ConcreteReaderCreatorSoenmez();
+		ReaderProductSoenmez product = creator.factoryMethod(typ);
+		String[] zeile = product.leseAusDatei();
+		product.schliesseDatei();
+		
+		this.stadtfuehrung = new Stadtfuehrung(zeile[0],
 				Integer.parseInt(zeile[1]),
 				zeile[2],
 				Float.parseFloat(zeile[3]),
-				zeile[4].split("_"));
-		}
+				zeile[4].split("_"));	
 	}
 
 	public void schreibeStadtfuehrungenInCsvDatei() throws IOException {

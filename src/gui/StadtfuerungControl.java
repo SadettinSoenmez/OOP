@@ -21,12 +21,8 @@ public class StadtfuerungControl {
 	}
 
 	public void leseAusDatei(String typ) {
-		if (!"csv".equals(typ)) {
-			this.sView.zeigeInformationsfensterAn("Noch nicht implementiert!");
-			return;
-		}
 		try {
-			this.sModel.leseStadtfuehrungAusCsvDatei();
+			this.sModel.leseStadtfuehrungAusDatei(typ);
 			this.sView.zeigeInformationsfensterAn("Die Stadtfuehrung wurde gelesen!");
 		}
 		catch (IOException exc) {
